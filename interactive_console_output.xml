@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20221004 10:41:35.592" rpa="false" schemaversion="3">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\Q0041\.vscode\extensions\robocorp.robotframework-lsp-1.2.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Portal Launching">
+<arg>TC_01</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Browser}</var>
+<arg>${CONFIG}[Browser]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221004 10:42:07.379" level="FAIL">Dictionary '${CONFIG}' has no key 'Browser'.</msg>
+<status status="FAIL" starttime="20221004 10:42:07.372" endtime="20221004 10:42:07.379"/>
+</kw>
+<if>
+<branch type="IF" condition="'${Browser}' == 'Chrome'">
+<kw name="Chromedriver Diectory" library="Data">
+<var>${path}</var>
+<status status="NOT RUN" starttime="20221004 10:42:07.381" endtime="20221004 10:42:07.384"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${CONFIG}[URL]</arg>
+<arg>browser=${Browser}</arg>
+<arg>executable_path=${path}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20221004 10:42:07.384" endtime="20221004 10:42:07.384"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:42:07.381" endtime="20221004 10:42:07.384"/>
+</branch>
+<branch type="ELSE">
+<kw name="Edgedriver Diectory" library="Data">
+<var>${path}</var>
+<status status="NOT RUN" starttime="20221004 10:42:07.388" endtime="20221004 10:42:07.389"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${CONFIG}[URL]</arg>
+<arg>browser=${Browser}</arg>
+<arg>executable_path=${path}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20221004 10:42:07.389" endtime="20221004 10:42:07.389"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:42:07.387" endtime="20221004 10:42:07.389"/>
+</branch>
+<status status="NOT RUN" starttime="20221004 10:42:07.381" endtime="20221004 10:42:07.389"/>
+</if>
+<kw name="Maximize Browser Window" library="RPA.Browser.Selenium">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" starttime="20221004 10:42:07.389" endtime="20221004 10:42:07.389"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20221004 10:42:07.389" endtime="20221004 10:42:07.389"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Text_Vis}</var>
+<arg>${el_text_validation}</arg>
+<doc>Is element visible</doc>
+<status status="NOT RUN" starttime="20221004 10:42:07.393" endtime="20221004 10:42:07.393"/>
+</kw>
+<if>
+<branch type="IF" condition="${Text_Vis}">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221004 10:42:07.393" endtime="20221004 10:42:07.394"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:42:07.393" endtime="20221004 10:42:07.394"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221004 10:42:07.394" endtime="20221004 10:42:07.394"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:42:07.394" endtime="20221004 10:42:07.394"/>
+</branch>
+<status status="NOT RUN" starttime="20221004 10:42:07.393" endtime="20221004 10:42:07.394"/>
+</if>
+<status status="FAIL" starttime="20221004 10:42:07.365" endtime="20221004 10:42:07.395"/>
+</kw>
+<kw name="Data Collection">
+<kw name="Create Dict" library="Filtering">
+<var>${data}</var>
+<kw name="Current Diectory" library="Data">
+<var>${File}</var>
+<msg timestamp="20221004 10:42:49.737" level="INFO">${File} = c:\Users\Q0041\Documents\Robots\Manapuram\input\Automation Test Case.xlsx</msg>
+<status status="PASS" starttime="20221004 10:42:49.736" endtime="20221004 10:42:49.737"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${File}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="PASS" starttime="20221004 10:42:49.737" endtime="20221004 10:42:50.145"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data}</var>
+<arg>Controller</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221004 10:42:50.145" level="INFO">${data} = Table(columns=['SL No', 'TEST CASE ID', 'TEST CASE NAME', 'Execute_Flag', 'Status', 'TimeDelayBeforeRun_In Mnts'], rows=12)</msg>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.145"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.145"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${data}</arg>
+<arg>Execute_Flag</arg>
+<arg>==</arg>
+<arg>YES</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.145"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{alldata}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221004 10:42:50.145" level="INFO">&amp;{alldata} = { }</msg>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.145"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{data}</value>
+<iter>
+<var name="${row}">{'SL No': '10', 'TEST CASE ID': 'TC_10', 'TEST CASE NAME': 'Part payment option', 'Execute_Flag': 'YES', 'Status': 'fail', 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221004 10:42:50.145" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Part payment option | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.145"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.145"/>
+</kw>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.153"/>
+</iter>
+<status status="PASS" starttime="20221004 10:42:50.145" endtime="20221004 10:42:50.153"/>
+</for>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${File}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="PASS" starttime="20221004 10:42:50.153" endtime="20221004 10:42:50.233"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data2}</var>
+<arg>TestData</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221004 10:42:50.241" level="INFO">${data2} = Table(columns=['SL No', 'TestCase_Id', 'TestName', 'PageLoading_Text', 'UserName', 'Password', 'Acc_no', 'Mini_amt', 'card_Details'], rows=12)</msg>
+<status status="PASS" starttime="20221004 10:42:50.233" endtime="20221004 10:42:50.241"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<status status="PASS" starttime="20221004 10:42:50.241" endtime="20221004 10:42:50.241"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${data2}</arg>
+<arg>TestCase_Id</arg>
+<arg>in</arg>
+<arg>${alldata.keys()}</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<status status="PASS" starttime="20221004 10:42:50.241" endtime="20221004 10:42:50.241"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{data2}</value>
+<iter>
+<var name="${row}">{'SL No': '10', 'TestCase_Id': 'TC_10', 'TestName': 'Part payment option', 'PageLoading_Text': None, 'UserName': 9633535397, 'Password': 'deepa123*', 'Acc_no': '0115170730013108', 'Mini_amt': 3, 'card...</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221004 10:42:50.241" endtime="20221004 10:42:50.249"/>
+</kw>
+<status status="PASS" starttime="20221004 10:42:50.241" endtime="20221004 10:42:50.249"/>
+</iter>
+<status status="PASS" starttime="20221004 10:42:50.241" endtime="20221004 10:42:50.249"/>
+</for>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${alldata}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" starttime="20221004 10:42:50.249" endtime="20221004 10:42:50.249"/>
+</kw>
+<msg timestamp="20221004 10:42:50.249" level="INFO">${data} = {'TC_10': {'TEST CASE NAME': 'Part payment option', 'Execute_Flag': 'YES', 'TimeDelayBeforeRun_In Mnts': None, 'username': 9633535397, 'password': 'deepa123*', 'Acc_no': '0115170730013108', 'Mini_amt'...</msg>
+<status status="PASS" starttime="20221004 10:42:49.732" endtime="20221004 10:42:50.249"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${details}</arg>
+<arg>${data}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" starttime="20221004 10:42:50.249" endtime="20221004 10:42:50.249"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{out_config}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221004 10:42:50.249" level="INFO">&amp;{out_config} = { }</msg>
+<status status="PASS" starttime="20221004 10:42:50.249" endtime="20221004 10:42:50.249"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${CONFIG_FILE}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="PASS" starttime="20221004 10:42:50.249" endtime="20221004 10:42:50.290"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Reading worksheet: ${CONFIG_SHEET}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221004 10:42:50.290" endtime="20221004 10:42:50.290"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${table}</var>
+<arg>${CONFIG_SHEET}</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221004 10:42:50.294" level="INFO">${table} = Table(columns=['Name', 'Value'], rows=3)</msg>
+<status status="PASS" starttime="20221004 10:42:50.294" endtime="20221004 10:42:50.294"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{table}</value>
+<iter>
+<var name="${row}">{'Name': 'URL', 'Value': 'https://uatonpay.manappuram.com/'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221004 10:42:50.294" endtime="20221004 10:42:50.302"/>
+</kw>
+<status status="PASS" starttime="20221004 10:42:50.294" endtime="20221004 10:42:50.302"/>
+</branch>
+<status status="PASS" starttime="20221004 10:42:50.294" endtime="20221004 10:42:50.302"/>
+</if>
+<status status="PASS" starttime="20221004 10:42:50.294" endtime="20221004 10:42:50.302"/>
+</iter>
+<iter>
+<var name="${row}">{'Name': 'Browser', 'Value': 'Edge'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.302"/>
+</kw>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.302"/>
+</branch>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.302"/>
+</if>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.302"/>
+</iter>
+<iter>
+<var name="${row}">{'Name': 'Headless', 'Value': 'True'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.310"/>
+</kw>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.310"/>
+</branch>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.310"/>
+</if>
+<status status="PASS" starttime="20221004 10:42:50.302" endtime="20221004 10:42:50.310"/>
+</iter>
+<status status="PASS" starttime="20221004 10:42:50.294" endtime="20221004 10:42:50.310"/>
+</for>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${CONFIG}</arg>
+<arg>${out_config}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" starttime="20221004 10:42:50.310" endtime="20221004 10:42:50.310"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<status status="PASS" starttime="20221004 10:42:50.310" endtime="20221004 10:42:50.310"/>
+</kw>
+<status status="PASS" starttime="20221004 10:42:49.732" endtime="20221004 10:42:50.310"/>
+</kw>
+<kw name="Portal Launching">
+<arg>TC_01</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Browser}</var>
+<arg>${CONFIG}[Browser]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221004 10:43:17.195" level="INFO">${Browser} = Edge</msg>
+<status status="PASS" starttime="20221004 10:43:17.195" endtime="20221004 10:43:17.195"/>
+</kw>
+<if>
+<branch type="IF" condition="'${Browser}' == 'Chrome'">
+<kw name="Chromedriver Diectory" library="Data">
+<var>${path}</var>
+<status status="NOT RUN" starttime="20221004 10:43:17.195" endtime="20221004 10:43:17.195"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${CONFIG}[URL]</arg>
+<arg>browser=${Browser}</arg>
+<arg>executable_path=${path}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:17.195" endtime="20221004 10:43:17.195"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:43:17.195" endtime="20221004 10:43:17.195"/>
+</branch>
+<branch type="ELSE">
+<kw name="Edgedriver Diectory" library="Data">
+<var>${path}</var>
+<msg timestamp="20221004 10:43:17.195" level="INFO">${path} = c:\Users\Q0041\Documents\Robots\Manapuram\msedgedriver.exe</msg>
+<status status="PASS" starttime="20221004 10:43:17.195" endtime="20221004 10:43:17.195"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${CONFIG}[URL]</arg>
+<arg>browser=${Browser}</arg>
+<arg>executable_path=${path}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" starttime="20221004 10:43:17.195" endtime="20221004 10:43:21.369"/>
+</kw>
+<status status="PASS" starttime="20221004 10:43:17.195" endtime="20221004 10:43:21.370"/>
+</branch>
+<status status="PASS" starttime="20221004 10:43:17.195" endtime="20221004 10:43:21.370"/>
+</if>
+<kw name="Maximize Browser Window" library="RPA.Browser.Selenium">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221004 10:43:21.370" endtime="20221004 10:43:21.633"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" starttime="20221004 10:43:21.633" endtime="20221004 10:43:23.639"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Text_Vis}</var>
+<arg>${el_text_validation}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221004 10:43:23.666" level="INFO">${Text_Vis} = False</msg>
+<status status="PASS" starttime="20221004 10:43:23.641" endtime="20221004 10:43:23.666"/>
+</kw>
+<if>
+<branch type="IF" condition="${Text_Vis}">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:23.666" endtime="20221004 10:43:23.666"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:43:23.666" endtime="20221004 10:43:23.672"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" starttime="20221004 10:43:23.673" endtime="20221004 10:43:23.674"/>
+</kw>
+<status status="PASS" starttime="20221004 10:43:23.672" endtime="20221004 10:43:23.674"/>
+</branch>
+<status status="PASS" starttime="20221004 10:43:23.666" endtime="20221004 10:43:23.675"/>
+</if>
+<status status="PASS" starttime="20221004 10:43:17.195" endtime="20221004 10:43:23.675"/>
+</kw>
+<kw name="Portal Login">
+<arg>TC_02</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${UserName}</var>
+<arg>${details}[${TestCase_Id}][username]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221004 10:43:54.489" level="FAIL">Dictionary '${details}' has no key 'TC_02'.</msg>
+<status status="FAIL" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Password}</var>
+<arg>${details}[${TestCase_Id}][password]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${el_Username}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>${el_Username}</arg>
+<arg>${UserName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${el_password}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>${el_password}</arg>
+<arg>${Password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Click Element If Visible" library="RPA.Browser.Selenium">
+<arg>${el_Login}</arg>
+<doc>Click element if it is visible</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Login_err}</var>
+<arg>${el_Login_error}</arg>
+<doc>Is element visible</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<if>
+<branch type="IF" condition="${Login_err}">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</branch>
+<status status="NOT RUN" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</if>
+<status status="FAIL" starttime="20221004 10:43:54.489" endtime="20221004 10:43:54.489"/>
+</kw>
+<status status="PASS" starttime="20221004 10:41:35.710" endtime="20221004 10:44:11.399"/>
+</kw>
+<status status="PASS" starttime="20221004 10:41:35.710" endtime="20221004 10:44:11.407"/>
+</test>
+<status status="PASS" starttime="20221004 10:41:35.595" endtime="20221004 10:44:11.407"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
