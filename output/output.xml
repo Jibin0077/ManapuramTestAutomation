@@ -1,0 +1,1941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20221006 13:12:06.685" rpa="true" schemaversion="3">
+<suite id="s1" name="Task1" source="C:\Users\Q0041\Documents\Robots\Manapuram\Task1.robot">
+<test id="s1-t1" name="Run Task" line="8">
+<kw name="MAIN FLOW" library="tasks">
+<kw name="Current Diectory" library="Data">
+<var>${File}</var>
+<msg timestamp="20221006 13:12:24.151" level="INFO">${File} = C:\Users\Q0041\Documents\Robots\Manapuram\input\Automation Test Case.xlsx</msg>
+<status status="PASS" starttime="20221006 13:12:24.140" endtime="20221006 13:12:24.151"/>
+</kw>
+<kw name="Data Collection" library="Subflow">
+<kw name="Create Dict" library="Filtering">
+<var>${data}</var>
+<kw name="Current Diectory" library="Data">
+<var>${File}</var>
+<msg timestamp="20221006 13:12:24.151" level="INFO">${File} = C:\Users\Q0041\Documents\Robots\Manapuram\input\Automation Test Case.xlsx</msg>
+<status status="PASS" starttime="20221006 13:12:24.151" endtime="20221006 13:12:24.151"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${File}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221006 13:12:24.658" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026197D4C130&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:24.151" endtime="20221006 13:12:24.658"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data}</var>
+<arg>Controller</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221006 13:12:24.658" level="INFO">Created table: Table(columns=['SL No', 'TEST CASE ID', 'TEST CASE NAME', 'Execute_Flag', 'Status', 'TimeDelayBeforeRun_In Mnts'], rows=12)</msg>
+<msg timestamp="20221006 13:12:24.668" level="INFO">${data} = Table(columns=['SL No', 'TEST CASE ID', 'TEST CASE NAME', 'Execute_Flag', 'Status', 'TimeDelayBeforeRun_In Mnts'], rows=12)</msg>
+<status status="PASS" starttime="20221006 13:12:24.658" endtime="20221006 13:12:24.668"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221006 13:12:24.668" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026197D4C130&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:24.668" endtime="20221006 13:12:24.668"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${data}</arg>
+<arg>Execute_Flag</arg>
+<arg>==</arg>
+<arg>YES</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20221006 13:12:24.668" level="INFO">Filtered -4 rows</msg>
+<status status="PASS" starttime="20221006 13:12:24.668" endtime="20221006 13:12:24.668"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{alldata}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.668" level="INFO">&amp;{alldata} = { }</msg>
+<status status="PASS" starttime="20221006 13:12:24.668" endtime="20221006 13:12:24.668"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{data}</value>
+<iter>
+<var name="${row}">{'SL No': '1', 'TEST CASE ID': 'TC_01', 'TEST CASE NAME': 'Portal Launching', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.673" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Portal Launching | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.668" endtime="20221006 13:12:24.673"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.673" endtime="20221006 13:12:24.673"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.668" endtime="20221006 13:12:24.673"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '2', 'TEST CASE ID': 'TC_02', 'TEST CASE NAME': 'Quick Pay in Portal', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.678" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Quick Pay in Portal | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.673" endtime="20221006 13:12:24.678"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.678" endtime="20221006 13:12:24.678"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.673" endtime="20221006 13:12:24.678"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '3', 'TEST CASE ID': 'TC_03', 'TEST CASE NAME': 'Portal Login', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.678" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Portal Login | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.678" endtime="20221006 13:12:24.678"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.678" endtime="20221006 13:12:24.678"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.678" endtime="20221006 13:12:24.678"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '4', 'TEST CASE ID': 'TC_04', 'TEST CASE NAME': 'Portal Login with Email Notification', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.678" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Portal Login with Email Notification | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.678" endtime="20221006 13:12:24.678"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.678" endtime="20221006 13:12:24.678"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.678" endtime="20221006 13:12:24.678"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '5', 'TEST CASE ID': 'TC_05', 'TEST CASE NAME': 'Portal login with menus validation', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.688" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Portal login with menus validation | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.688"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.688"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.688"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '6', 'TEST CASE ID': 'TC_06', 'TEST CASE NAME': 'Portal Login with the user verification', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.688" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Portal Login with the user verification | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.688"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.688"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.688"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '7', 'TEST CASE ID': 'TC_07', 'TEST CASE NAME': 'Portal sign out', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.688" level="INFO">&amp;{valuedata} = { TEST CASE NAME=Portal sign out | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.688"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.699"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.688" endtime="20221006 13:12:24.699"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '8', 'TEST CASE ID': 'TC_08', 'TEST CASE NAME': 'PayTM Login', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{valuedata}</var>
+<arg>TEST CASE NAME</arg>
+<arg>${row}[TEST CASE NAME]</arg>
+<arg>Execute_Flag</arg>
+<arg>${row}[Execute_Flag]</arg>
+<arg>TimeDelayBeforeRun_In Mnts</arg>
+<arg>${row}[TimeDelayBeforeRun_In Mnts]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.699" level="INFO">&amp;{valuedata} = { TEST CASE NAME=PayTM Login | Execute_Flag=YES | TimeDelayBeforeRun_In Mnts=None }</msg>
+<status status="PASS" starttime="20221006 13:12:24.699" endtime="20221006 13:12:24.699"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}</arg>
+<arg>${row['TEST CASE ID']}</arg>
+<arg>${valuedata}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.699" endtime="20221006 13:12:24.699"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.699" endtime="20221006 13:12:24.699"/>
+</iter>
+<status status="PASS" starttime="20221006 13:12:24.668" endtime="20221006 13:12:24.699"/>
+</for>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${File}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221006 13:12:24.814" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000002619690BE80&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:24.699" endtime="20221006 13:12:24.814"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data2}</var>
+<arg>TestData</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221006 13:12:24.814" level="INFO">Created table: Table(columns=['SL No', 'TestCase_Id', 'TestName', 'PageLoading_Text', 'UserName', 'Password', 'Acc_no', 'Mini_amt', 'card_Details'], rows=12)</msg>
+<msg timestamp="20221006 13:12:24.814" level="INFO">${data2} = Table(columns=['SL No', 'TestCase_Id', 'TestName', 'PageLoading_Text', 'UserName', 'Password', 'Acc_no', 'Mini_amt', 'card_Details'], rows=12)</msg>
+<status status="PASS" starttime="20221006 13:12:24.814" endtime="20221006 13:12:24.814"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221006 13:12:24.814" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000002619690BE80&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:24.814" endtime="20221006 13:12:24.814"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${data2}</arg>
+<arg>TestCase_Id</arg>
+<arg>in</arg>
+<arg>${alldata.keys()}</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20221006 13:12:24.821" level="INFO">Filtered -4 rows</msg>
+<status status="PASS" starttime="20221006 13:12:24.814" endtime="20221006 13:12:24.821"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{data2}</value>
+<iter>
+<var name="${row}">{'SL No': '1', 'TestCase_Id': 'TC_01', 'TestName': 'Portal Launching', 'PageLoading_Text': 'Welcome To Manappuram Finance Limited Customer eService Portal\n', 'UserName': None, 'Password': None, 'Acc_...</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.821" endtime="20221006 13:12:24.821"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.821" endtime="20221006 13:12:24.821"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '2', 'TestCase_Id': 'TC_02', 'TestName': 'Quick Pay in Portal', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.821" endtime="20221006 13:12:24.830"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.821" endtime="20221006 13:12:24.830"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '3', 'TestCase_Id': 'TC_03', 'TestName': 'Portal Login', 'PageLoading_Text': None, 'UserName': 9633535397, 'Password': 'deepa123*', 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.832" endtime="20221006 13:12:24.832"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.830" endtime="20221006 13:12:24.832"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '4', 'TestCase_Id': 'TC_04', 'TestName': 'Portal Login with Email Notification', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details...</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.832" endtime="20221006 13:12:24.832"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.832" endtime="20221006 13:12:24.832"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '5', 'TestCase_Id': 'TC_05', 'TestName': 'Portal login with menus validation', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details':...</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.832" endtime="20221006 13:12:24.832"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.832" endtime="20221006 13:12:24.832"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '6', 'TestCase_Id': 'TC_06', 'TestName': 'Portal Login with the user verification', 'PageLoading_Text': None, 'UserName': 'DEEPA WILSON', 'Password': None, 'Acc_no': None, 'Mini_amt': None, ...</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.832" endtime="20221006 13:12:24.842"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.832" endtime="20221006 13:12:24.842"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '7', 'TestCase_Id': 'TC_07', 'TestName': 'Portal sign out', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.842" endtime="20221006 13:12:24.847"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.842" endtime="20221006 13:12:24.847"/>
+</iter>
+<iter>
+<var name="${row}">{'SL No': '8', 'TestCase_Id': 'TC_08', 'TestName': 'PayTM Login', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${alldata}[${row['TestCase_Id']}]</arg>
+<arg>username</arg>
+<arg>${row}[UserName]</arg>
+<arg>password</arg>
+<arg>${row}[Password]</arg>
+<arg>Acc_no</arg>
+<arg>${row}[Acc_no]</arg>
+<arg>Mini_amt</arg>
+<arg>${row}[Mini_amt]</arg>
+<arg>card_Details</arg>
+<arg>${row}[card_Details]</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.847" endtime="20221006 13:12:24.847"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.847" endtime="20221006 13:12:24.847"/>
+</iter>
+<status status="PASS" starttime="20221006 13:12:24.821" endtime="20221006 13:12:24.847"/>
+</for>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${alldata}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:24.847" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:24.847" endtime="20221006 13:12:24.847"/>
+</kw>
+<msg timestamp="20221006 13:12:24.852" level="INFO">${data} = {'TC_01': {'TEST CASE NAME': 'Portal Launching', 'Execute_Flag': 'YES', 'TimeDelayBeforeRun_In Mnts': None, 'username': None, 'password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None},...</msg>
+<status status="PASS" starttime="20221006 13:12:24.151" endtime="20221006 13:12:24.852"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${details}</arg>
+<arg>${data}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221006 13:12:24.852" level="INFO">${details} = {'TC_01': {'TEST CASE NAME': 'Portal Launching', 'Execute_Flag': 'YES', 'TimeDelayBeforeRun_In Mnts': None, 'username': None, 'password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None},...</msg>
+<status status="PASS" starttime="20221006 13:12:24.852" endtime="20221006 13:12:24.852"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{out_config}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221006 13:12:24.852" level="INFO">&amp;{out_config} = { }</msg>
+<status status="PASS" starttime="20221006 13:12:24.852" endtime="20221006 13:12:24.852"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${CONFIG_FILE}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221006 13:12:24.894" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026199E78640&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:24.852" endtime="20221006 13:12:24.894"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Reading worksheet: ${CONFIG_SHEET}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:24.894" endtime="20221006 13:12:24.894"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${table}</var>
+<arg>${CONFIG_SHEET}</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221006 13:12:24.894" level="INFO">Created table: Table(columns=['Name', 'Value'], rows=3)</msg>
+<msg timestamp="20221006 13:12:24.894" level="INFO">${table} = Table(columns=['Name', 'Value'], rows=3)</msg>
+<status status="PASS" starttime="20221006 13:12:24.894" endtime="20221006 13:12:24.894"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{table}</value>
+<iter>
+<var name="${row}">{'Name': 'URL', 'Value': 'https://uatonpay.manappuram.com/'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.904" endtime="20221006 13:12:24.904"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.904" endtime="20221006 13:12:24.904"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:24.894" endtime="20221006 13:12:24.904"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:24.894" endtime="20221006 13:12:24.904"/>
+</iter>
+<iter>
+<var name="${row}">{'Name': 'Browser', 'Value': 'Edge'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.910" endtime="20221006 13:12:24.915"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.910" endtime="20221006 13:12:24.915"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:24.910" endtime="20221006 13:12:24.915"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:24.910" endtime="20221006 13:12:24.915"/>
+</iter>
+<iter>
+<var name="${row}">{'Name': 'Headless', 'Value': 'True'}</var>
+<if>
+<branch type="IF" condition="&quot;${row['Name']}&quot; != &quot;${null}&quot;">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${out_config}</arg>
+<arg>${row['Name']}</arg>
+<arg>${row['Value']}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20221006 13:12:24.918" endtime="20221006 13:12:24.921"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.917" endtime="20221006 13:12:24.921"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:24.916" endtime="20221006 13:12:24.921"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:24.916" endtime="20221006 13:12:24.921"/>
+</iter>
+<status status="PASS" starttime="20221006 13:12:24.894" endtime="20221006 13:12:24.921"/>
+</for>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${CONFIG}</arg>
+<arg>${out_config}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221006 13:12:24.923" level="INFO">${CONFIG} = {'URL': 'https://uatonpay.manappuram.com/', 'Browser': 'Edge', 'Headless': 'True'}</msg>
+<status status="PASS" starttime="20221006 13:12:24.922" endtime="20221006 13:12:24.923"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221006 13:12:24.923" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026199E78640&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:24.923" endtime="20221006 13:12:24.923"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.151" endtime="20221006 13:12:24.924"/>
+</kw>
+<kw name="Filtering Data" library="Filtering">
+<var>${data}</var>
+<kw name="Current Diectory" library="Data">
+<var>${File}</var>
+<msg timestamp="20221006 13:12:24.926" level="INFO">${File} = C:\Users\Q0041\Documents\Robots\Manapuram\input\Automation Test Case.xlsx</msg>
+<status status="PASS" starttime="20221006 13:12:24.925" endtime="20221006 13:12:24.926"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${File}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221006 13:12:25.023" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026199E85BA0&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:24.926" endtime="20221006 13:12:25.023"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data}</var>
+<arg>Controller</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221006 13:12:25.023" level="INFO">Created table: Table(columns=['SL No', 'TEST CASE ID', 'TEST CASE NAME', 'Execute_Flag', 'Status', 'TimeDelayBeforeRun_In Mnts'], rows=12)</msg>
+<msg timestamp="20221006 13:12:25.023" level="INFO">${data} = Table(columns=['SL No', 'TEST CASE ID', 'TEST CASE NAME', 'Execute_Flag', 'Status', 'TimeDelayBeforeRun_In Mnts'], rows=12)</msg>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221006 13:12:25.023" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026199E85BA0&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${data}</arg>
+<arg>Execute_Flag</arg>
+<arg>==</arg>
+<arg>YES</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20221006 13:12:25.023" level="INFO">Filtered -4 rows</msg>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{Menu_list}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221006 13:12:25.023" level="INFO">@{Menu_list} = [ ]</msg>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{data}</value>
+<iter>
+<var name="${element}">{'SL No': '1', 'TEST CASE ID': 'TC_01', 'TEST CASE NAME': 'Portal Launching', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '2', 'TEST CASE ID': 'TC_02', 'TEST CASE NAME': 'Quick Pay in Portal', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.023"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.034"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.034"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '3', 'TEST CASE ID': 'TC_03', 'TEST CASE NAME': 'Portal Login', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.034" endtime="20221006 13:12:25.034"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.034" endtime="20221006 13:12:25.034"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.034" endtime="20221006 13:12:25.034"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '4', 'TEST CASE ID': 'TC_04', 'TEST CASE NAME': 'Portal Login with Email Notification', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.034" endtime="20221006 13:12:25.034"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.034" endtime="20221006 13:12:25.034"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.034" endtime="20221006 13:12:25.034"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '5', 'TEST CASE ID': 'TC_05', 'TEST CASE NAME': 'Portal login with menus validation', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '6', 'TEST CASE ID': 'TC_06', 'TEST CASE NAME': 'Portal Login with the user verification', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '7', 'TEST CASE ID': 'TC_07', 'TEST CASE NAME': 'Portal sign out', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '8', 'TEST CASE ID': 'TC_08', 'TEST CASE NAME': 'PayTM Login', 'Execute_Flag': 'YES', 'Status': None, 'TimeDelayBeforeRun_In Mnts': None}</var>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${element}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${Menu_list}</arg>
+<arg>${element}[TEST CASE ID]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</iter>
+<status status="PASS" starttime="20221006 13:12:25.023" endtime="20221006 13:12:25.037"/>
+</for>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${Menu_list}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.037"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${File}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20221006 13:12:25.148" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026198300460&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:25.037" endtime="20221006 13:12:25.148"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data2}</var>
+<arg>TestData</arg>
+<arg>header=${True}</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20221006 13:12:25.148" level="INFO">Created table: Table(columns=['SL No', 'TestCase_Id', 'TestName', 'PageLoading_Text', 'UserName', 'Password', 'Acc_no', 'Mini_amt', 'card_Details'], rows=12)</msg>
+<msg timestamp="20221006 13:12:25.148" level="INFO">${data2} = Table(columns=['SL No', 'TestCase_Id', 'TestName', 'PageLoading_Text', 'UserName', 'Password', 'Acc_no', 'Mini_amt', 'card_Details'], rows=12)</msg>
+<status status="PASS" starttime="20221006 13:12:25.148" endtime="20221006 13:12:25.148"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20221006 13:12:25.148" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000026198300460&gt;</msg>
+<status status="PASS" starttime="20221006 13:12:25.148" endtime="20221006 13:12:25.148"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${data2}</arg>
+<arg>TestCase_Id</arg>
+<arg>in</arg>
+<arg>${Menu_list}</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20221006 13:12:25.148" level="INFO">Filtered -4 rows</msg>
+<status status="PASS" starttime="20221006 13:12:25.148" endtime="20221006 13:12:25.148"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${data2}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:25.148" endtime="20221006 13:12:25.148"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${data2}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:25.148" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:25.148" endtime="20221006 13:12:25.148"/>
+</kw>
+<msg timestamp="20221006 13:12:25.148" level="INFO">${data} = Table(columns=['SL No', 'TestCase_Id', 'TestName', 'PageLoading_Text', 'UserName', 'Password', 'Acc_no', 'Mini_amt', 'card_Details'], rows=8)</msg>
+<status status="PASS" starttime="20221006 13:12:24.924" endtime="20221006 13:12:25.148"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{data}</value>
+<iter>
+<var name="${element}">{'SL No': '1', 'TestCase_Id': 'TC_01', 'TestName': 'Portal Launching', 'PageLoading_Text': 'Welcome To Manappuram Finance Limited Customer eService Portal\n', 'UserName': None, 'Password': None, 'Acc_...</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:25.157" endtime="20221006 13:12:25.157"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:25.157" level="INFO">${TestCase_Id} = TC_01</msg>
+<status status="PASS" starttime="20221006 13:12:25.157" endtime="20221006 13:12:25.157"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:25.246" level="INFO">Portal Launching</msg>
+<msg timestamp="20221006 13:12:25.246" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:25.157" endtime="20221006 13:12:25.246"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:25.246" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:25.246"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Portal Launching" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Browser}</var>
+<arg>${CONFIG}[Browser]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:25.246" level="INFO">${Browser} = Edge</msg>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:25.246"/>
+</kw>
+<if>
+<branch type="IF" condition="'${Browser}' == 'Chrome'">
+<kw name="Chromedriver Diectory" library="Data">
+<var>${path}</var>
+<status status="NOT RUN" starttime="20221006 13:12:25.246" endtime="20221006 13:12:25.246"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${CONFIG}[URL]</arg>
+<arg>browser=${Browser}</arg>
+<arg>executable_path=${path}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:25.246" endtime="20221006 13:12:25.246"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:25.246" endtime="20221006 13:12:25.246"/>
+</branch>
+<branch type="ELSE">
+<kw name="Edgedriver Diectory" library="Data">
+<var>${path}</var>
+<msg timestamp="20221006 13:12:25.246" level="INFO">${path} = C:\Users\Q0041\Documents\Robots\Manapuram\msedgedriver.exe</msg>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:25.246"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${CONFIG}[URL]</arg>
+<arg>browser=${Browser}</arg>
+<arg>executable_path=${path}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221006 13:12:25.246" level="INFO">Opening browser 'Edge' to base url 'https://uatonpay.manappuram.com/'.</msg>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:29.456"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:29.456"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:29.457"/>
+</if>
+<kw name="Maximize Browser Window" library="RPA.Browser.Selenium">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221006 13:12:29.460" endtime="20221006 13:12:29.642"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:31.658" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:29.643" endtime="20221006 13:12:31.658"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Text_Vis}</var>
+<arg>${el_text_validation}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:31.717" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//div[contains(text(),"Welcome To Manappuram Finance Limited Customer eService Portal")]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221006 13:12:31.718" level="INFO">${Text_Vis} = False</msg>
+<status status="PASS" starttime="20221006 13:12:31.664" endtime="20221006 13:12:31.718"/>
+</kw>
+<if>
+<branch type="IF" condition="${Text_Vis}">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:31.720" endtime="20221006 13:12:31.721"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:31.719" endtime="20221006 13:12:31.722"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:31.726" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:31.724" endtime="20221006 13:12:31.728"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:31.723" endtime="20221006 13:12:31.728"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:31.718" endtime="20221006 13:12:31.729"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:31.731"/>
+</kw>
+<msg timestamp="20221006 13:12:31.734" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:31.734" level="INFO">${Reason} = fail</msg>
+<status status="PASS" starttime="20221006 13:12:25.246" endtime="20221006 13:12:31.734"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:31.737" endtime="20221006 13:12:32.318"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:31.736" endtime="20221006 13:12:32.318"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:32.318" endtime="20221006 13:12:32.318"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:32.318" endtime="20221006 13:12:32.318"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:32.318" endtime="20221006 13:12:32.318"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:31.735" endtime="20221006 13:12:32.318"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:25.148" endtime="20221006 13:12:32.318"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '2', 'TestCase_Id': 'TC_02', 'TestName': 'Quick Pay in Portal', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:32.323" endtime="20221006 13:12:32.324"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:32.326" level="INFO">${TestCase_Id} = TC_02</msg>
+<status status="PASS" starttime="20221006 13:12:32.325" endtime="20221006 13:12:32.326"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:32.699" level="INFO">Portal Launching
+Quick Pay in Portal</msg>
+<msg timestamp="20221006 13:12:32.700" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:32.328" endtime="20221006 13:12:32.700"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:32.701" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:32.700" endtime="20221006 13:12:32.701"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Quick Pay in Portal" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Bttn_Vis}</var>
+<arg>${el_quickpay}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:32.763" level="INFO">Element '//*[@id="expresspay"]' is displayed.</msg>
+<msg timestamp="20221006 13:12:32.764" level="INFO">${Bttn_Vis} = True</msg>
+<status status="PASS" starttime="20221006 13:12:32.701" endtime="20221006 13:12:32.764"/>
+</kw>
+<if>
+<branch type="IF" condition="${Bttn_Vis}">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:32.767" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:32.766" endtime="20221006 13:12:32.768"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:32.765" endtime="20221006 13:12:32.768"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:32.764" endtime="20221006 13:12:32.769"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:32.701" endtime="20221006 13:12:32.769"/>
+</kw>
+<msg timestamp="20221006 13:12:32.770" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:32.770" level="INFO">${Reason} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:32.701" endtime="20221006 13:12:32.770"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:32.770" endtime="20221006 13:12:33.012"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:32.770" endtime="20221006 13:12:33.012"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:33.014" endtime="20221006 13:12:33.014"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:33.014" endtime="20221006 13:12:33.014"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:33.012" endtime="20221006 13:12:33.014"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:32.770" endtime="20221006 13:12:33.014"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:32.318" endtime="20221006 13:12:33.014"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '3', 'TestCase_Id': 'TC_03', 'TestName': 'Portal Login', 'PageLoading_Text': None, 'UserName': 9633535397, 'Password': 'deepa123*', 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:33.014" endtime="20221006 13:12:33.016"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:33.017" level="INFO">${TestCase_Id} = TC_03</msg>
+<status status="PASS" starttime="20221006 13:12:33.017" endtime="20221006 13:12:33.017"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:33.377" level="INFO">Portal Launching
+Quick Pay in Portal
+Portal Login</msg>
+<msg timestamp="20221006 13:12:33.378" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:33.018" endtime="20221006 13:12:33.378"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:33.380" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:33.379" endtime="20221006 13:12:33.380"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Portal Login" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${UserName}</var>
+<arg>${details}[${TestCase_Id}][username]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:33.383" level="INFO">${UserName} = 9633535397</msg>
+<status status="PASS" starttime="20221006 13:12:33.383" endtime="20221006 13:12:33.383"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Password}</var>
+<arg>${details}[${TestCase_Id}][password]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:33.383" level="INFO">${Password} = deepa123*</msg>
+<status status="PASS" starttime="20221006 13:12:33.383" endtime="20221006 13:12:33.383"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${el_Username}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>${el_Username}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221006 13:12:33.383" endtime="20221006 13:12:33.438"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:33.383" endtime="20221006 13:12:33.438"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>${el_Username}</arg>
+<arg>${UserName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221006 13:12:33.440" level="INFO">Typing text '9633535397' into text field 'xpath://*[@id="username"]'.</msg>
+<status status="PASS" starttime="20221006 13:12:33.439" endtime="20221006 13:12:33.652"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${el_password}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>${el_password}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221006 13:12:33.656" endtime="20221006 13:12:33.712"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:33.654" endtime="20221006 13:12:33.713"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>${el_password}</arg>
+<arg>${Password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20221006 13:12:33.713" level="INFO">Typing password into text field 'xpath://*[@id="password"]'.</msg>
+<msg timestamp="20221006 13:12:33.786" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20221006 13:12:33.903" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20221006 13:12:33.713" endtime="20221006 13:12:33.903"/>
+</kw>
+<kw name="Click Element If Visible" library="RPA.Browser.Selenium">
+<arg>${el_Login}</arg>
+<doc>Click element if it is visible</doc>
+<msg timestamp="20221006 13:12:33.970" level="INFO">Element 'xpath://*[@id="txt_login"]' is displayed.</msg>
+<msg timestamp="20221006 13:12:33.970" level="INFO">Clicking element 'xpath://*[@id="txt_login"]'.</msg>
+<status status="PASS" starttime="20221006 13:12:33.905" endtime="20221006 13:12:34.554"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:36.570" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:34.554" endtime="20221006 13:12:36.570"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Login_err}</var>
+<arg>${el_Login_error}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:36.991" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//*[contains(text(),"Sorry! you have tried to enter invalid credentials")]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221006 13:12:36.991" level="INFO">${Login_err} = False</msg>
+<status status="PASS" starttime="20221006 13:12:36.572" endtime="20221006 13:12:36.991"/>
+</kw>
+<if>
+<branch type="IF" condition="${Login_err}">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:36.991" endtime="20221006 13:12:36.993"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:36.991" endtime="20221006 13:12:36.993"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:36.994" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:36.994" endtime="20221006 13:12:36.994"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:36.993" endtime="20221006 13:12:36.994"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:36.991" endtime="20221006 13:12:36.994"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:33.382" endtime="20221006 13:12:36.997"/>
+</kw>
+<msg timestamp="20221006 13:12:36.997" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:36.997" level="INFO">${Reason} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:33.381" endtime="20221006 13:12:36.998"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:36.999" endtime="20221006 13:12:37.300"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:36.998" endtime="20221006 13:12:37.300"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:37.302" endtime="20221006 13:12:37.302"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:37.303" endtime="20221006 13:12:37.303"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:37.301" endtime="20221006 13:12:37.303"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:36.998" endtime="20221006 13:12:37.303"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:33.014" endtime="20221006 13:12:37.304"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '4', 'TestCase_Id': 'TC_04', 'TestName': 'Portal Login with Email Notification', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details...</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:37.304" endtime="20221006 13:12:37.305"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:37.307" level="INFO">${TestCase_Id} = TC_04</msg>
+<status status="PASS" starttime="20221006 13:12:37.306" endtime="20221006 13:12:37.307"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:37.642" level="INFO">Portal Launching
+Quick Pay in Portal
+Portal Login
+Portal Login with Email Notification</msg>
+<msg timestamp="20221006 13:12:37.642" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:37.308" endtime="20221006 13:12:37.642"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:37.642" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:37.642" endtime="20221006 13:12:37.642"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Portal Login with Email Notification" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Email_Vis}</var>
+<arg>${el_email}</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:37.662" level="INFO" html="true">Ran with keyword &lt;b&gt;Element Should Be Visible&lt;/b&gt; which returned error: &lt;i&gt;Element with locator '//*[@id="modal"]//*[@id="Img1"]' not found.&lt;/i&gt;</msg>
+<msg timestamp="20221006 13:12:37.662" level="INFO">${Email_Vis} = False</msg>
+<status status="PASS" starttime="20221006 13:12:37.642" endtime="20221006 13:12:37.662"/>
+</kw>
+<if>
+<branch type="IF" condition="${Email_Vis}">
+<kw name="Click Element When Visible" library="RPA.Browser.Selenium">
+<arg>${el_email}</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:37.662" endtime="20221006 13:12:37.662"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:37.662" endtime="20221006 13:12:37.662"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:37.662" endtime="20221006 13:12:37.662"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:37.662" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:37.662" endtime="20221006 13:12:37.662"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:37.662" endtime="20221006 13:12:37.662"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:37.662" endtime="20221006 13:12:37.662"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:37.642" endtime="20221006 13:12:37.672"/>
+</kw>
+<msg timestamp="20221006 13:12:37.672" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:37.672" level="INFO">${Reason} = fail</msg>
+<status status="PASS" starttime="20221006 13:12:37.642" endtime="20221006 13:12:37.672"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:37.674" endtime="20221006 13:12:37.851"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:37.672" endtime="20221006 13:12:37.851"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:37.851" endtime="20221006 13:12:37.851"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:37.851" endtime="20221006 13:12:37.851"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:37.851" endtime="20221006 13:12:37.851"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:37.672" endtime="20221006 13:12:37.851"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:37.304" endtime="20221006 13:12:37.851"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '5', 'TestCase_Id': 'TC_05', 'TestName': 'Portal login with menus validation', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details':...</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:37.851" endtime="20221006 13:12:37.851"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:37.851" level="INFO">${TestCase_Id} = TC_05</msg>
+<status status="PASS" starttime="20221006 13:12:37.851" endtime="20221006 13:12:37.851"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:38.132" level="INFO">Portal Launching
+Quick Pay in Portal
+Portal Login
+Portal Login with Email Notification
+Portal login with menus validation</msg>
+<msg timestamp="20221006 13:12:38.132" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:37.851" endtime="20221006 13:12:38.132"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:38.132" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:38.132" endtime="20221006 13:12:38.132"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Portal login with menus validation" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:41.147" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:38.132" endtime="20221006 13:12:41.147"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{Menu_list}</var>
+<arg>Make Payment</arg>
+<arg>Customer Profile</arg>
+<arg>Online Gold Loan Disbursal</arg>
+<arg>Support</arg>
+<arg>Download Pawn Ticket</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221006 13:12:41.147" level="INFO">@{Menu_list} = [ Make Payment | Customer Profile | Online Gold Loan Disbursal | Support | Download Pawn Ticket ]</msg>
+<status status="PASS" starttime="20221006 13:12:41.147" endtime="20221006 13:12:41.147"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{Menu_list}</value>
+<iter>
+<var name="${element}">Make Payment</var>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Menu_Vis}</var>
+<arg>//*[contains(text(),"${element}")]</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:41.198" level="INFO">Element '//*[contains(text(),"Make Payment")]' is displayed.</msg>
+<msg timestamp="20221006 13:12:41.198" level="INFO">${Menu_Vis} = True</msg>
+<status status="PASS" starttime="20221006 13:12:41.147" endtime="20221006 13:12:41.198"/>
+</kw>
+<if>
+<branch type="IF" condition="${Menu_Vis}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${status}</var>
+<arg>pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:41.198" level="INFO">${status} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:41.198" endtime="20221006 13:12:41.198"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.198" endtime="20221006 13:12:41.198"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.198" endtime="20221006 13:12:41.198"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:41.198" endtime="20221006 13:12:41.198"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.198" endtime="20221006 13:12:41.198"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:41.147" endtime="20221006 13:12:41.198"/>
+</iter>
+<iter>
+<var name="${element}">Customer Profile</var>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Menu_Vis}</var>
+<arg>//*[contains(text(),"${element}")]</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:41.249" level="INFO">Element '//*[contains(text(),"Customer Profile")]' is displayed.</msg>
+<msg timestamp="20221006 13:12:41.249" level="INFO">${Menu_Vis} = True</msg>
+<status status="PASS" starttime="20221006 13:12:41.204" endtime="20221006 13:12:41.249"/>
+</kw>
+<if>
+<branch type="IF" condition="${Menu_Vis}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${status}</var>
+<arg>pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:41.249" level="INFO">${status} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:41.249" endtime="20221006 13:12:41.249"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.249" endtime="20221006 13:12:41.249"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.249" endtime="20221006 13:12:41.249"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:41.249" endtime="20221006 13:12:41.249"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.249" endtime="20221006 13:12:41.249"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:41.198" endtime="20221006 13:12:41.249"/>
+</iter>
+<iter>
+<var name="${element}">Online Gold Loan Disbursal</var>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Menu_Vis}</var>
+<arg>//*[contains(text(),"${element}")]</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:41.291" level="INFO">Element '//*[contains(text(),"Online Gold Loan Disbursal")]' is displayed.</msg>
+<msg timestamp="20221006 13:12:41.291" level="INFO">${Menu_Vis} = True</msg>
+<status status="PASS" starttime="20221006 13:12:41.249" endtime="20221006 13:12:41.296"/>
+</kw>
+<if>
+<branch type="IF" condition="${Menu_Vis}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${status}</var>
+<arg>pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:41.296" level="INFO">${status} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:41.296" endtime="20221006 13:12:41.296"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.296" endtime="20221006 13:12:41.296"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.296" endtime="20221006 13:12:41.296"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:41.296" endtime="20221006 13:12:41.296"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.296" endtime="20221006 13:12:41.296"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:41.249" endtime="20221006 13:12:41.296"/>
+</iter>
+<iter>
+<var name="${element}">Support</var>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Menu_Vis}</var>
+<arg>//*[contains(text(),"${element}")]</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:41.332" level="INFO">Element '//*[contains(text(),"Support")]' is displayed.</msg>
+<msg timestamp="20221006 13:12:41.332" level="INFO">${Menu_Vis} = True</msg>
+<status status="PASS" starttime="20221006 13:12:41.296" endtime="20221006 13:12:41.332"/>
+</kw>
+<if>
+<branch type="IF" condition="${Menu_Vis}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${status}</var>
+<arg>pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:41.332" level="INFO">${status} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:41.332" endtime="20221006 13:12:41.332"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.332" endtime="20221006 13:12:41.332"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.332" endtime="20221006 13:12:41.332"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:41.332" endtime="20221006 13:12:41.332"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.332" endtime="20221006 13:12:41.332"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:41.296" endtime="20221006 13:12:41.342"/>
+</iter>
+<iter>
+<var name="${element}">Download Pawn Ticket</var>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Menu_Vis}</var>
+<arg>//*[contains(text(),"${element}")]</arg>
+<doc>Is element visible</doc>
+<msg timestamp="20221006 13:12:41.385" level="INFO">Element '//*[contains(text(),"Download Pawn Ticket")]' is displayed.</msg>
+<msg timestamp="20221006 13:12:41.385" level="INFO">${Menu_Vis} = True</msg>
+<status status="PASS" starttime="20221006 13:12:41.342" endtime="20221006 13:12:41.385"/>
+</kw>
+<if>
+<branch type="IF" condition="${Menu_Vis}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${status}</var>
+<arg>pass</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:41.385" level="INFO">${status} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:41.385" endtime="20221006 13:12:41.385"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.385" endtime="20221006 13:12:41.385"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.385" endtime="20221006 13:12:41.390"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:41.385" endtime="20221006 13:12:41.390"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.385" endtime="20221006 13:12:41.390"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:41.342" endtime="20221006 13:12:41.390"/>
+</iter>
+<status status="PASS" starttime="20221006 13:12:41.147" endtime="20221006 13:12:41.390"/>
+</for>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${status}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:41.390" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:41.390" endtime="20221006 13:12:41.392"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:38.132" endtime="20221006 13:12:41.393"/>
+</kw>
+<msg timestamp="20221006 13:12:41.393" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:41.393" level="INFO">${Reason} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:38.132" endtime="20221006 13:12:41.393"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:41.394" endtime="20221006 13:12:41.557"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.394" endtime="20221006 13:12:41.557"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.557" endtime="20221006 13:12:41.557"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.557" endtime="20221006 13:12:41.557"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:41.557" endtime="20221006 13:12:41.557"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.394" endtime="20221006 13:12:41.557"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:37.851" endtime="20221006 13:12:41.557"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '6', 'TestCase_Id': 'TC_06', 'TestName': 'Portal Login with the user verification', 'PageLoading_Text': None, 'UserName': 'DEEPA WILSON', 'Password': None, 'Acc_no': None, 'Mini_amt': None, ...</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:41.557" endtime="20221006 13:12:41.567"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:41.568" level="INFO">${TestCase_Id} = TC_06</msg>
+<status status="PASS" starttime="20221006 13:12:41.568" endtime="20221006 13:12:41.568"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:41.848" level="INFO">Portal Launching
+Quick Pay in Portal
+Portal Login
+Portal Login with Email Notification
+Portal login with menus validation
+Portal Login with the user verification</msg>
+<msg timestamp="20221006 13:12:41.848" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:41.568" endtime="20221006 13:12:41.848"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:41.848" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:41.848" endtime="20221006 13:12:41.848"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Portal Login with the user verification" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${User}</var>
+<arg>${details}[${TestCase_Id}][username]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:41.848" level="INFO">${User} = DEEPA WILSON</msg>
+<status status="PASS" starttime="20221006 13:12:41.848" endtime="20221006 13:12:41.848"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="RPA.Browser.Selenium">
+<arg>${el_user_validation}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221006 13:12:41.848" endtime="20221006 13:12:41.896"/>
+</kw>
+<kw name="Get Text" library="RPA.Browser.Selenium">
+<var>${User_name}</var>
+<arg>${el_user_validation}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221006 13:12:41.936" level="INFO">${User_name} = DEEPA WILSON</msg>
+<status status="PASS" starttime="20221006 13:12:41.896" endtime="20221006 13:12:41.936"/>
+</kw>
+<if>
+<branch type="IF" condition="'${User_name}' == '${User}'">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:41.936" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:41.936" endtime="20221006 13:12:41.936"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.936" endtime="20221006 13:12:41.936"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>fail</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:41.936" endtime="20221006 13:12:41.936"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:41.936" endtime="20221006 13:12:41.936"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.936" endtime="20221006 13:12:41.936"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:41.848" endtime="20221006 13:12:41.936"/>
+</kw>
+<msg timestamp="20221006 13:12:41.936" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:41.936" level="INFO">${Reason} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:41.848" endtime="20221006 13:12:41.936"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:41.936" endtime="20221006 13:12:42.112"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:41.936" endtime="20221006 13:12:42.112"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:42.112" endtime="20221006 13:12:42.112"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:42.112" endtime="20221006 13:12:42.112"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:42.112" endtime="20221006 13:12:42.112"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:41.936" endtime="20221006 13:12:42.112"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:41.557" endtime="20221006 13:12:42.112"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '7', 'TestCase_Id': 'TC_07', 'TestName': 'Portal sign out', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:42.112" endtime="20221006 13:12:42.112"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:42.112" level="INFO">${TestCase_Id} = TC_07</msg>
+<status status="PASS" starttime="20221006 13:12:42.112" endtime="20221006 13:12:42.112"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:42.386" level="INFO">Portal Launching
+Quick Pay in Portal
+Portal Login
+Portal Login with Email Notification
+Portal login with menus validation
+Portal Login with the user verification
+Portal sign out</msg>
+<msg timestamp="20221006 13:12:42.386" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:42.112" endtime="20221006 13:12:42.386"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:42.386" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:42.386" endtime="20221006 13:12:42.386"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Portal sign out" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5</arg>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${el_signout}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>${el_signout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221006 13:12:42.386" endtime="20221006 13:12:42.407"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:42.386" endtime="20221006 13:12:42.407"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>${el_signout}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221006 13:12:42.407" level="INFO">Clicking element '//*[@class="top-links"]//*[contains(text(),"Sign Out")]'.</msg>
+<status status="PASS" starttime="20221006 13:12:42.407" endtime="20221006 13:12:42.824"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:42.824" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:42.824" endtime="20221006 13:12:42.824"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:42.386" endtime="20221006 13:12:42.824"/>
+</kw>
+<msg timestamp="20221006 13:12:42.824" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:42.824" level="INFO">${Reason} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:42.386" endtime="20221006 13:12:42.824"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:42.824" endtime="20221006 13:12:43.318"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:42.824" endtime="20221006 13:12:43.318"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:43.318" endtime="20221006 13:12:43.318"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:43.318" endtime="20221006 13:12:43.318"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:43.318" endtime="20221006 13:12:43.318"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:42.824" endtime="20221006 13:12:43.318"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:42.112" endtime="20221006 13:12:43.318"/>
+</iter>
+<iter>
+<var name="${element}">{'SL No': '8', 'TestCase_Id': 'TC_08', 'TestName': 'PayTM Login', 'PageLoading_Text': None, 'UserName': None, 'Password': None, 'Acc_no': None, 'Mini_amt': None, 'card_Details': None}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${element}[TestName]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221006 13:12:43.318" endtime="20221006 13:12:43.318"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TestCase_Id}</var>
+<arg>${element}[TestCase_Id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221006 13:12:43.325" level="INFO">${TestCase_Id} = TC_08</msg>
+<status status="PASS" starttime="20221006 13:12:43.318" endtime="20221006 13:12:43.325"/>
+</kw>
+<kw name="Get Delay" library="Data">
+<var>${Delay}</var>
+<arg>${element}[TestName]</arg>
+<msg timestamp="20221006 13:12:44.082" level="INFO">Portal Launching
+Quick Pay in Portal
+Portal Login
+Portal Login with Email Notification
+Portal login with menus validation
+Portal Login with the user verification
+Portal sign out
+PayTM Login</msg>
+<msg timestamp="20221006 13:12:44.082" level="INFO">${Delay} = 0</msg>
+<status status="PASS" starttime="20221006 13:12:43.325" endtime="20221006 13:12:44.082"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${Delay}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:44.087" level="INFO">Slept 0 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:44.082" endtime="20221006 13:12:44.087"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${Reason}</var>
+<arg>${element}[TestName]</arg>
+<arg>${TestCase_Id}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="PayTM Login" library="Subflow">
+<arg>${TestCase_Id}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>5</arg>
+<arg>Wait Until Page contains Element</arg>
+<arg>${el_payTm}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Page Contains Element" library="RPA.Browser.Selenium">
+<arg>${el_payTm}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20221006 13:12:44.087" endtime="20221006 13:12:47.440"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:44.087" endtime="20221006 13:12:47.440"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>${el_payTm}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221006 13:12:47.440" level="INFO">Clicking element '//*[@class="d-flex flex-row justify-content-center my-5"]//*[@class="card mx-4 card-design"][2]'.</msg>
+<status status="PASS" starttime="20221006 13:12:47.440" endtime="20221006 13:12:47.647"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:50.661" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:47.648" endtime="20221006 13:12:50.661"/>
+</kw>
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221006 13:12:50.661" endtime="20221006 13:12:53.141"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>pass</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20221006 13:12:53.142" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20221006 13:12:53.142" endtime="20221006 13:12:53.144"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:44.087" endtime="20221006 13:12:53.146"/>
+</kw>
+<msg timestamp="20221006 13:12:53.146" level="INFO">${status} = PASS</msg>
+<msg timestamp="20221006 13:12:53.146" level="INFO">${Reason} = pass</msg>
+<status status="PASS" starttime="20221006 13:12:44.087" endtime="20221006 13:12:53.146"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>${status}</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="PASS" starttime="20221006 13:12:53.149" endtime="20221006 13:12:53.430"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:53.148" endtime="20221006 13:12:53.430"/>
+</branch>
+<branch type="ELSE">
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:53.432" endtime="20221006 13:12:53.432"/>
+</kw>
+<kw name="Update Excel Value" library="MyLibrary">
+<arg>${File}</arg>
+<arg>TEST CASE ID</arg>
+<arg>${TestCase_Id}</arg>
+<arg>Status</arg>
+<arg>FAIL</arg>
+<doc>Updates the excel file with the given values.</doc>
+<status status="NOT RUN" starttime="20221006 13:12:53.432" endtime="20221006 13:12:53.432"/>
+</kw>
+<status status="NOT RUN" starttime="20221006 13:12:53.430" endtime="20221006 13:12:53.432"/>
+</branch>
+<status status="PASS" starttime="20221006 13:12:53.146" endtime="20221006 13:12:53.432"/>
+</if>
+<status status="PASS" starttime="20221006 13:12:43.318" endtime="20221006 13:12:53.432"/>
+</iter>
+<status status="PASS" starttime="20221006 13:12:25.148" endtime="20221006 13:12:53.432"/>
+</for>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221006 13:12:55.440" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221006 13:12:53.432" endtime="20221006 13:12:55.441"/>
+</kw>
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221006 13:12:55.443" endtime="20221006 13:12:55.443"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.140" endtime="20221006 13:12:55.444"/>
+</kw>
+<status status="PASS" starttime="20221006 13:12:24.140" endtime="20221006 13:12:55.445"/>
+</test>
+<status status="PASS" starttime="20221006 13:12:06.692" endtime="20221006 13:12:55.447"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Task1">Task1</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20221006 13:12:24.066" level="WARN">C:\Users\Q0041\AppData\Local\robocorp\holotree\5a1fac3c5_9fcd2534\lib\site-packages\RPA\Desktop\Windows.py:209: FutureWarning: `RPA.Desktop.Windows` got deprecated and will be no longer maintained, please use `RPA.Windows` instead (https://robocorp.com/docs/libraries/rpa-framework/rpa-windows)
+  deprecation(
+</msg>
+</errors>
+</robot>
